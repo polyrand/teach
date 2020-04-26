@@ -1,8 +1,7 @@
 <SRC = $(wildcard ./*.ipynb)
-DIR = nbs
+DIR = .
 ROOTDIR:=$(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
-DOCKERFILE = backend.dockerfile
-DOCKERBUILDER = Dockerfile
+DOCKERFILE =  Dockerfile
 ifeq ($(origin .RECIPEPREFIX), undefined)
   $(error This Make does not support .RECIPEPREFIX. Please use GNU Make 4.0 or later)
 endif
@@ -16,21 +15,9 @@ MAKEFLAGS += --no-builtin-rules
 .DEFAULT_GOAL := build
 
 help:
-> @echo "build - run snbdev_build_lib"
-> @echo "build-new - remove all., rebuild and pip install"
-> @echo "format - run formatting script"
 > @echo "clean - remove all build, test, coverage and Python artifacts"
 > @echo "clean-build - remove build artifacts"
 > @echo "clean-pyc - remove Python file artifacts"
-
-# format / lint
-format:
-> bash scripts/lint.sh
-.PHONY: format
-
-report: format
-> bash scripts/report_code.sh
-.PHONY: report
 
 .PHONY: clean
 clean:
@@ -64,10 +51,6 @@ clean-pyc:
 > find . -name '*.pyo' -exec rm -f {} +
 > find . -name '*~' -exec rm -f {} +
 > find . -name '__pycache__' -exec rm -fr {} +
-
-.PHONY: build
-build:
-> bash build.sh
 
 .PHONY: deps
 deps: $(shell find requirements -name '*.in' -type f)
