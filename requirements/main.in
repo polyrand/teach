@@ -17,3 +17,4 @@ numpy
 pandas
 requests
 toolz
+memory_profiler
