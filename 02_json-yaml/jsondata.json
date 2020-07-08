@@ -1,0 +1,1 @@
+{"nombre": "oriol", "edad": 28, "casado": true, "divorciado": false, "hijos": ["ricardito", "ian"], "mascotas": null, "ordenadores": [{"modelo": "macbook", "versionpython": 3.7}, {"modelo": "imac", "versionpython": 3.8}]}
