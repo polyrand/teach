@@ -1,15 +1,13 @@
 autoflake
-bandit
 black
 flake8
-flake8-bugbear
 ipykernel
-ipytest
 isort
 mypy
-nbdev
 pip-tools
 pycodestyle
 pydocstyle
 pytest
 setuptools
+wheel
+twine
