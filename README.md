@@ -6,6 +6,20 @@
 
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/polyrand/teach/)
 
+## Ejercicios
+
+En ese repositorio están también las soluciones a los ejercicios que se harán en el curso, pero se trata de hacerlos sin mirarlas. Las soluciones están en los archivos con el nombre: NN_xNN. Siendo N = un número. Por ejemplo:
+
+```
+04_funciones.ipynb: Archivo con la documentación para enseñar el tema 04_funciones
+04_x01.ipynb: Archivo con la solución al ejercicio 01 del tema 04_funciones
+04_x02.ipynb: Archivo con la solución al ejercicio 02 del tema 04_funciones
+
+05_estructuras_de_datos.ipynb: Archivo con la documentación para enseñar el tema 05
+05_x01.py: Archivo con la solución al ejercicio 02 del tema 05
+05_x02.py: Archivo con la solución al ejercicio 02 del tema 05
+```
+
 ## Instalación
 
 Para una instalación completa. Clonar el repositorio, crear un nuevo entorno virtual e instalar las dependencias.
