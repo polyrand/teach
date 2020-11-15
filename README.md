@@ -2,6 +2,10 @@
 
 > Materiales y ejercicios utilizados para enseñar Python.
 
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/polyrand/teach/HEAD)
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/polyrand/teach/]
+
 ## Instalación
 
 Para una instalación completa. Clonar el repositorio, crear un nuevo entorno virtual e instalar las dependencias.

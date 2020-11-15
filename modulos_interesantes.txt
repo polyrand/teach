@@ -1,0 +1,2 @@
+https://docs.python.org/es/3/library/subprocess.html
+https://docs.python.org/es/3/library/dataclasses.html

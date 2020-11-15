@@ -1,0 +1,162 @@
+#!/usr/bin/env bash
+#/ PATH=./node_modules/.bin:$PATH
+#/ https://www.tldp.org/LDP/abs/html/options.html
+# Similar to -v (Print each command to stdout before executing it), but expands commands
+# set -o xtrace
+# set -o verbose
+# Abort script at first error, when a command exits with non-zero status (except in until or while loops, if-tests, list constructs)
+set -o errexit
+# apply to subprocesses too
+shopt -s inherit_errexit 2>/dev/null || true
+# Causes a pipeline to return the exit status of the last command in the pipe that returned a non-zero return value.
+set -o pipefail
+# Attempt to use undefined variable outputs error message, and forces an exit
+set -o nounset
+# makes iterations and splitting less surprising
+IFS=$'\n\t'
+# full path current folder
+__dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# full path of the script.sh (including the name)
+__file="${__dir}/$(basename "${BASH_SOURCE[0]}")"
+# name of the script
+__base="$(basename ${__file} .sh)"
+# full path of the parent folder
+__root="$(cd "$(dirname "${__dir}")" && pwd)" # <-- change this as it depends on your app
+
+# Log function
+# This disables and re-enables debug trace mode (only if it was already set)
+# Sources: https://superuser.com/a/1338887/922762 --  https://github.com/Kurento/adm-scripts/blob/master/bash.conf.sh
+shopt -s expand_aliases  # This trick requires enabling aliases in Bash
+BASENAME="$(basename "$0")"  # Complete file name
+echo_and_restore() {
+    echo "[${BASENAME}] $(cat -)"
+    # shellcheck disable=SC2154
+    case "$flags" in (*x*) set -x; esac
+}
+alias log='({ flags="$-"; set +x; } 2>/dev/null; echo_and_restore) <<<'
+
+
+# Exit trap
+# This runs at the end or, thanks to 'errexit', upon any error
+on_exit() {
+    { _RC="$?"; set +x; } 2>/dev/null
+    if ((_RC)); then log "ERROR ($_RC)"; else log "SUCCESS"; fi
+    log "#################### END ####################"
+}
+trap on_exit EXIT
+
+
+log "==================== BEGIN ===================="
+
+export appdir="$__dir"/
+export SOURCE_FILES="$appdir"
+
+function assert_env () {
+    source "$__dir"/".venv/bin/activate" || exit 1
+    echo "Pip location:"
+    pip_cmd=$(command -v pip)
+    echo "$pip_cmd"
+
+    current=$(pwd)
+    pip_path="$current/.venv/bin/pip"
+    echo "$pip_path"
+
+    if [[ "$pip_cmd" -ef "$pip_path" ]]; then
+        echo "paths match"
+    else
+        exit 1
+    fi
+}
+
+function clean () {
+    rm -rf $(find . -name __pycache__)
+    rm -f $(find . -type f -name '*.py[co]' )
+    rm -f $(find . -type f -name '*~' )
+    rm -f $(find . -type f -name '.*~' )
+    rm -rf .cache
+    rm -rf .pytest_cache
+    rm -rf htmlcov
+    rm -rf ./*.egg-info
+    rm -f .coverage
+    rm -f .coverage.*
+    rm -rf build/
+    rm -rf dist/
+    rm -fr .eggs/
+    find . -name '*.egg-info' -exec rm -fr {} +
+    find . -name '*.egg' -exec rm -f {} +
+}
+
+function deps () {
+    assert_env
+    pip install pip-tools pip setuptools
+    pip-compile -v --build-isolation --generate-hashes --allow-unsafe --output-file requirements/main.txt requirements/main.in & \
+    pip-compile -v --build-isolation --generate-hashes --allow-unsafe --output-file requirements/dev.txt requirements/dev.in
+}
+
+function update () {
+    assert_env
+    pip install --upgrade pip-tools pip setuptools
+    pip-compile -v --upgrade --build-isolation --generate-hashes --allow-unsafe --output-file requirements/main.txt requirements/main.in & \
+    pip-compile -v --upgrade --build-isolation --generate-hashes --allow-unsafe --output-file requirements/dev.txt requirements/dev.in
+    wait
+    pip-sync requirements/*.txt
+
+}
+
+function lint () {
+    assert_env
+    isort --force-single-line-imports "$appdir"
+    autoflake --remove-all-unused-imports --recursive --remove-unused-variables --in-place "$appdir" --exclude=__init__.py
+    isort --multi-line=3 --trailing-comma --force-grid-wrap=0 --combine-as --line-width 88 "$appdir"
+    black "$appdir"
+}
+
+
+function publish () {
+    assert_env
+    if ! command -v twine &>/dev/null ; then
+        echo "Unable to find the 'twine' command."
+        echo "Install from PyPI, using 'pip install twine'."
+    exit 1
+    fi
+
+    if ! pip show wheel &>/dev/null ; then
+        echo "Unable to find the 'wheel' command."
+        echo "Install from PyPI, using 'pip install wheel'."
+        exit 1
+    fi
+
+    clean
+
+    log "building package"
+    python3 setup.py sdist bdist_wheel
+
+    log "uploading to PyPi"
+
+    python3 -m twine upload dist/*
+
+    log "cleaning..."
+    clean
+
+    echo "You probably want to also tag the version now:"
+    echo "git tag -a ${VERSION} -m 'version ${VERSION}'"
+    echo "git push --tags"
+
+}
+
+function default {
+    clean
+}
+
+function tasks {
+    echo "$0 <task> <args>"
+    echo "Tasks:"
+    compgen -A function | cat -n
+}
+
+# Help message (extracted from script headers)
+usage() { grep '^#/' "$0" | cut --characters=4-; exit 0; }
+REGEX='(^|\W)(-h|--help)($|\W)'
+[[ "$*" =~ $REGEX ]] && usage || true
+TIMEFORMAT="Task completed in %3lR"
+time ${@:-default}
