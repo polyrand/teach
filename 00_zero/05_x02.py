@@ -1,6 +1,6 @@
 lista_miembros.append("ricardo")
 
-A ver si el último valor de la lista es "ricardo":
+# A ver si el último valor de la lista es "ricardo":
 
 lista_miembros[-1]
 
