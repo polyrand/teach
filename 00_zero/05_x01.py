@@ -1,18 +1,16 @@
-# Opcion 1
-for nombre, valores in equipos.items():
+def suma(a, b):
 
-    if sum(valores) > 200:
-        print("el pc", nombres_pc[nombre], "tiene mas de 200")
-
-
-# Opcion 2
-for nombre, valores in equipos.items():
-    print(f"Iterando sobre {nombre}")
-    print(f"Iterando con {valores}")
-
-    suma = 0
-    for v in valores:
-        suma += v
-
-    if suma > 200:
-        print("el pc", nombres_pc[nombre], "tiene mas de 200")
+    if type(a) == str:
+    # la forma correcta sería usar la función isinstance()
+    # if isinstance(a, str):
+        print(f"el parametro a, con datos: {a} es texto y debería ser un número")
+        return
+    
+    if type(b) == str:
+        print(f"el parametro b, con datos: {b} es texto y debería ser un número")
+        return
+    
+    resultado = a + b
+    print("El resultado es:", resultado)
+    
+    return resultado
