@@ -1,0 +1,14 @@
+QUERY = "INSERT INTO ... VALUES ..."  # -----------------------
+#                    ^^^^       ^^^^                          |
+#      hay que terminar de completarla                        |
+                                                          #   |
+for carta in cartas_filtradas:                            #   |   
+    nombre = ...                                          #   | Luego la utilizamos aquí
+    tipo = ...                                            #   | junto con los parámetros que hemos contruido 
+    rareza = ...                                          #   | dentro del bucle 
+    parametros_query = {"": nombre "": tipo, "": rareza}  #   | 
+    con.execute(QUERY , parametros_query)         # <----------
+#                ^                                            |
+#                |---------------------------------------------
+
+# También se puede hacer usando con.executemany(...), haciendo algunos cambios
