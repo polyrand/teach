@@ -1,0 +1,24 @@
+Confusas
+
+4.-  
+Para qué sirve los decoradores
+a)  
+Para añadir complejidad al código.
+b)  
+Para ejecutar instrucciones antes, durante o después de una función
+c)  
+Nos sirven de plantilla para crear nuevas funciones
+d)  
+Para poner unas cuantas “@“ por en medio del código y que parezca más avanzado
+
+9.-  
+Respecto al multiprocesamiento y procesamiento en paralelo, señale la falsa:
+a)  
+El uso de threads puede provocar race conditions que darán lugar a un comportamiento inesperado de nuestro código
+b)  
+Async es más seguro que usar threads, y ante la necesidad de crear código asíncrono nuevo, será lo utilizado en lugar de threads
+c)  
+Podemos user ThreadPoolExecutor o ProcessPoolExecutor para paralelizar código
+d)  
+Todas las anteriores son correctas (ninguna es falsa
+

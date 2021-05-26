@@ -6,7 +6,7 @@ Se puede descargar todo el contenido del repositorio en la siguiente URL (no rec
 
 https://github.com/polyrand/teach/archive/master.zip
 
-Para el curso es muy recomendable tener una cuenta de Google con al menos 500Mb libres de espacio en Google Drive. También utilizaremos el servicio repl.it, para el cual también recomiendo tener una cuenta (se puede iniciar sesión con Google).
+Para el curso es muy recomendable tener una cuenta de Google con al menos 500Mb libres de espacio en Google Drive. También utilizaremos el servicio replit.com, para el cual también recomiendo tener una cuenta (se puede iniciar sesión con Google).
 
 En ese repositorio están también las soluciones a los ejercicios que se harán en el curso, pero se trata de hacerlos sin mirarlas. Las soluciones están en los archivos con el nombre: NN_xNN. Siendo N = un número. Por ejemplo:
 
