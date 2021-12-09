@@ -53,27 +53,24 @@ pip install -r requirements/main.txt
 Actualmente estos contenidos están bajo dos licencias diferentes.
 
 * Apache 2.0: ``LICENSE_A``
-* GPL v3: ``LICENSE_B``
+* GPL v3: ``LICENSE_B`` + ``LICENSE-CC-BY-SA``
 
-Los elementos de este repositorio se podrán utilizar bajo la licencia Apache 2.0 (`LICENSE_A`) **excepto si se utilizan con motivos educativos o de formación**. Si se utilizan con este segundo fin, ya se con o sin ánimo de lucro, la licencia utlizada deberá ser GPL v3 (`LICENSE_B`). Por lo tanto se deberán citar todas las fuentes (incluídas en los materiales actuales), así como hacer el código de dicha actividad formativa abierto y disponible para todo el mundo.
+El código de este repositorio se podrán utilizar bajo la licencia Apache 2.0 (`LICENSE_A`) **excepto si se utilizan con motivos educativos o de formación**. Si se utilizan con este segundo fin, ya se con o sin ánimo de lucro, la licencia utlizada para el código deberá ser GPL v3 (`LICENSE_B`) y la Licencia de los materiales educativos será `LICENSE-CC-BY-SA`. Por lo tanto se deberán citar todas las fuentes (incluídas en los materiales actuales), así como hacer el código de dicha actividad formativa abierto y disponible para todo el mundo.
 
 ## License
 
 Currently these contents are under two different licenses.
 
 * Apache 2.0: `` LICENSE_A``
-* GPL v3: `` LICENSE_B``
+* GPL v3: ``LICENSE_B`` + ``LICENSE-CC-BY-SA``
 
-The parts of this repository may be used under the Apache 2.0 license (`LICENSE_A`) **except if used for educational or training purposes**. If used for this second purpose, whether for profit or not, the license used must be GPL v3 (`LICENSE_B`). Therefore, all sources (included in current materials) must be cited, as well as making the code of said training activity open and available to everyone.
+The code this repository may be used under the Apache 2.0 license (`LICENSE_A`) **except if used for educational or training purposes**. If used for this second purpose, whether for profit or not, the license used for the code must be GPL v3 (`LICENSE_B`) and the educational materials' License will be `LICENSE-CC-BY-SA`. Therefore, all sources (included in current materials) must be cited, as well as making the code of said training activity open and available to everyone.
 
-## Fuentes
+## Fuentes / Sources
 
-Si consideras que alguno de los ejercicios proviene de una fuente no citada. Por favor abre una *pull request* para que lo modifique si es necesario.
+Si consideras que alguno de los ejercicios proviene de una fuente no citada, por favor abre una *pull request* o *issue* para que lo modifique si es necesario.
 
-## Historial de cambios
-
-* 0.1.0
-    * Primer versión
+If you think any of the contents/exercises has a non-cited source, please open a *pull request* or *issue* so that I can fix it.
 
 ## Meta
 
