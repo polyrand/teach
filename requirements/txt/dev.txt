@@ -78,9 +78,9 @@ ipython-genutils==0.2.0 \
     --hash=sha256:72dd37233799e619666c9f639a9da83c34013a73e8bbc79a7a6348d93c61fab8 \
     --hash=sha256:eb2e116e75ecef9d4d228fdc66af54269afa26ab4463042e33785b887c628ba8 \
     # via traitlets
-ipython==7.19.0 \
-    --hash=sha256:c987e8178ced651532b3b1ff9965925bfd445c279239697052561a9ab806d28f \
-    --hash=sha256:cbb2ef3d5961d44e6a963b9817d4ea4e1fa2eb589c371a470fed14d8d40cbd6a \
+ipython==7.31.1 \
+    --hash=sha256:55df3e0bd0f94e715abd968bedd89d4e8a7bce4bf498fb123fed4f5398fea874 \
+    --hash=sha256:b5548ec5329a4bcf054a5deed5099b0f9622eb9ea51aaa7104d215fece201d8c \
     # via ipykernel
 isort==5.6.4 \
     --hash=sha256:dcab1d98b469a12a1a624ead220584391648790275560e1a43e54c5dceae65e7 \
